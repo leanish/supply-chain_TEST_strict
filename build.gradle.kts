@@ -14,7 +14,7 @@ java {
 
 dependencies {
     // Control: a plain declaration, free to move.
-    implementation("org.apache.commons:commons-lang3:3.12.0")
+    implementation("org.apache.commons:commons-lang3:3.18.0")
 
     // Strict declaration with newer versions available.
     implementation("commons-io:commons-io") {
@@ -48,8 +48,8 @@ dependencies {
         }
     }
 
-    // Control: a plain vulnerable declaration, free to fix.
-    implementation("org.apache.commons:commons-text:1.9")
+    // Control: a plain declaration, free to move.
+    implementation("org.apache.commons:commons-text:1.10.0")
 
     // Strict parent of a vulnerable transitive.
     implementation("com.squareup.okhttp3:okhttp") {
@@ -64,6 +64,20 @@ dependencies {
             strictly("1.26.0")
         }
         because("CVE-2024-25710: lowest fixed version")
+    }
+
+    // Security floors declared plainly, recorded in .github/dependency-floors.json.
+    implementation("com.fasterxml.jackson.core:jackson-core:2.18.11") {
+        because("GHSA-72hv-8253-57qq, GHSA-7hhh-6rmp-j9qf, GHSA-r7wm-3cxj-wff9: jackson-databind is strictly pinned at 2.15.2, which keeps jackson-core at 2.15.2 otherwise")
+    }
+    testImplementation("com.fasterxml.jackson.core:jackson-core:2.18.11") {
+        because("GHSA-72hv-8253-57qq, GHSA-7hhh-6rmp-j9qf, GHSA-r7wm-3cxj-wff9: jackson-databind is strictly pinned at 2.15.2, which keeps jackson-core at 2.15.2 otherwise")
+    }
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.0") {
+        because("GHSA-2qp4-g3q3-f92w, GHSA-cqj8-47ch-rvvq: okhttp is strictly pinned at 4.9.3 and brings kotlin-stdlib 1.4.10")
+    }
+    testImplementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.0") {
+        because("GHSA-2qp4-g3q3-f92w, GHSA-cqj8-47ch-rvvq: okhttp is strictly pinned at 4.9.3 and brings kotlin-stdlib 1.4.10")
     }
 }
 
