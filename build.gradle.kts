@@ -14,7 +14,7 @@ java {
 
 dependencies {
     // Control: a plain declaration, free to move.
-    implementation("org.apache.commons:commons-lang3:3.12.0")
+    implementation("org.apache.commons:commons-lang3:3.21.0")
 
     // Strict declaration with newer versions available.
     implementation("commons-io:commons-io") {
@@ -48,8 +48,8 @@ dependencies {
         }
     }
 
-    // Control: a plain vulnerable declaration, free to fix.
-    implementation("org.apache.commons:commons-text:1.9")
+    // Control: a plain declaration, free to move.
+    implementation("org.apache.commons:commons-text:1.15.0")
 
     // Strict parent of a vulnerable transitive.
     implementation("com.squareup.okhttp3:okhttp") {

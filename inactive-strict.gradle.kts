@@ -15,6 +15,6 @@ dependencies {
             }
         }
     } else {
-        add(inactiveStrict.name, "joda-time:joda-time:2.12.5")
+        add(inactiveStrict.name, "joda-time:joda-time:2.15.0")
     }
 }
